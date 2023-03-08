@@ -26,21 +26,21 @@ function playRound(playerSelection, computerSelection) {
     result = `It's a tie! ${playerSelection} equals ${computerSelection}`;
   } else if (playerSelection === "Rock") {
     if (computerSelection === "Paper") {
-      result = `You lose! ${playerSelection} loses to ${computerSelection}.`;
-    } else {
-      result = `You win! ${playerSelection} beats ${computerSelection}.`;
+      result = "You lose! Rock loses to Paper.";
+    } else if (computerSelection === "Scissors") {
+      result = "You win! Rock beats Scissors.";
     }
   } else if (playerSelection === "Paper") {
     if (computerSelection === "Rock") {
-      result = `You win! ${playerSelection} beats ${computerSelection}.`;
-    } else {
-      result = `You lose! ${playerSelection} loses to ${computerSelection}.`;
+      result = "You win! Paper beats Rock.";
+    } else if (computerSelection === "Scissors") {
+      result = "You lose! Paper loses to Scissors.";
     }
   } else if (playerSelection === "Scissors") {
     if (computerSelection === "Rock") {
-      result = `You lose! ${playerSelection} loses to ${computerSelection}.`;
-    } else {
-      result = `You win! ${playerSelection} beats ${computerSelection}.`;
+      result = "You lose! Scissors loses to Rock.";
+    } else if (computerSelection === "Paper") {
+      result = "You win! Scissors beats Paper.";
     }
   } else {
     console.error("Bad player input");
