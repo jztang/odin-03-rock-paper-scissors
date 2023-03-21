@@ -57,8 +57,10 @@ function playRound(playerSelection, computerSelection) {
   return { result, winner };
 }
 
+const results = document.querySelector("#results");
+
 document.querySelectorAll(".selection").forEach((selection) => {
   selection.addEventListener("click", () => {
-    console.log(playRound(selection.textContent, getComputerChoice()));
+    results.textContent = playRound(selection.textContent, getComputerChoice()).result;
   });
 });
