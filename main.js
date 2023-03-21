@@ -57,34 +57,8 @@ function playRound(playerSelection, computerSelection) {
   return { result, winner };
 }
 
-function game() {
-  let playerPoints = 0;
-  let computerPoints = 0;
-
-  for (let i = 1; i <= 5; i++) {
-    let playerSelection = prompt(`Round ${i}: Pick Rock/Paper/Scissors`, "Rock");
-    let { result, winner } = playRound(playerSelection, getComputerChoice());
-
-    if (winner === "Player") {
-      playerPoints++;
-    } else if (winner == "Computer") {
-      computerPoints++;
-    }
-
-    console.log(`[${playerPoints}-${computerPoints}] ${result}`);
-  }
-
-  let finalResult;
-
-  if (playerPoints > computerPoints) {
-    finalResult = "You win!";
-  } else if (playerPoints < computerPoints) {
-    finalResult = "You lose.";
-  } else {
-    finalResult = "It's a tie!";
-  }
-
-  console.log(`Final score: ${playerPoints}-${computerPoints}. ${finalResult}`);
-}
-
-game();
+document.querySelectorAll(".selection").forEach((selection) => {
+  selection.addEventListener("click", () => {
+    console.log(playRound(selection.textContent, getComputerChoice()));
+  });
+});
