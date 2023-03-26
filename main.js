@@ -1,3 +1,8 @@
+const score = document.querySelector("#score");
+const results = document.querySelector("#results");
+let playerScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
   let randomNum = Math.floor(Math.random() * 3); // get a random number 0-2
   let computerChoice;
@@ -24,40 +29,42 @@ function playRound(playerSelection, computerSelection) {
   let winner;
 
   if (playerSelection === computerSelection) {
-    result = `It's a tie! ${playerSelection} equals ${computerSelection}`;
     winner = "Tie";
   } else if (playerSelection === "Rock") {
     if (computerSelection === "Paper") {
-      result = "You lose! Rock loses to Paper.";
       winner = "Computer";
     } else if (computerSelection === "Scissors") {
-      result = "You win! Rock beats Scissors.";
       winner = "Player";
     }
   } else if (playerSelection === "Paper") {
     if (computerSelection === "Rock") {
-      result = "You win! Paper beats Rock.";
       winner = "Player";
     } else if (computerSelection === "Scissors") {
-      result = "You lose! Paper loses to Scissors.";
       winner = "Computer";
     }
   } else if (playerSelection === "Scissors") {
     if (computerSelection === "Rock") {
-      result = "You lose! Scissors loses to Rock.";
       winner = "Computer";
     } else if (computerSelection === "Paper") {
-      result = "You win! Scissors beats Paper.";
       winner = "Player";
     }
   } else {
     console.error("Bad player input");
   }
 
+  if (winner === "Player") {
+    result = `You win! ${playerSelection} beats ${computerSelection}`;
+    playerScore++;
+  } else if (winner === "Computer") {
+    result = `You lose! ${playerSelection} loses to ${computerSelection}`;
+    computerScore++;
+  } else {
+    result = `It's a tie! ${playerSelection} equals ${computerSelection}`;
+  }
+
+  score.textContent = `Player: ${playerScore} - Computer: ${computerScore}`;
   return { result, winner };
 }
-
-const results = document.querySelector("#results");
 
 document.querySelectorAll(".selection").forEach((selection) => {
   selection.addEventListener("click", () => {
