@@ -1,5 +1,6 @@
 const score = document.querySelector("#score");
 const results = document.querySelector("#results");
+const finalResults = document.querySelector("#final-results");
 let playerScore = 0;
 let computerScore = 0;
 
@@ -63,6 +64,13 @@ function playRound(playerSelection, computerSelection) {
   }
 
   score.textContent = `Player: ${playerScore} - Computer: ${computerScore}`;
+
+  if (playerScore >= 5) {
+    finalResults.textContent = "Game over - Player wins!";
+  } else if (computerScore >= 5) {
+    finalResults.textContent = "Game over - Computer wins!";
+  }
+
   return { result, winner };
 }
 
